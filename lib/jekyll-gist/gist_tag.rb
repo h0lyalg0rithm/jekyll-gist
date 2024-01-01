@@ -19,6 +19,7 @@ module Jekyll
         @settings = context.registers[:site].config["gist"]
         if (tag_contents = determine_arguments(@markup.strip))
           gist_id  = tag_contents[0]
+          gist_id.delete!(":")
           filename = tag_contents[1]
           gist_id  = context[gist_id]  if context.key?(gist_id)
           filename = context[filename] if context.key?(filename)
